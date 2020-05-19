@@ -1,7 +1,0 @@
-{
-    "python.pythonPath": "/home/alex/.cache/pypoetry/virtualenvs/app-0VUyGmOj-py3.8/bin/python",
-    "python.linting.flake8Enabled": true,
-    "python.linting.pylintEnabled": false,
-    "python.linting.enabled": true,
-    "python.formatting.provider": "black"
-}
