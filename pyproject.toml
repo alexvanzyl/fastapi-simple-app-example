@@ -1,0 +1,27 @@
+[tool.poetry]
+name = "app"
+version = "0.1.0"
+description = "A simple FastAPI application"
+authors = ["Alexander van Zyl <vanzyl.alex@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+fastapi = "^0.54.1"
+sqlalchemy = "^1.3.16"
+uvicorn = "^0.11.5"
+email_validator = "^1.1.0"
+psycopg2-binary = "^2.8.5"
+python-dotenv = "^0.13.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+flake8 = "^3.8.1"
+autopep8 = "^1.5.2"
+mypy = "^0.770"
+isort = "^4.3.21"
+black = "^19.10b0"
+sqlalchemy-stubs = "^0.3"
+
+[build-system]
+requires = ["poetry>=0.12"]
+build-backend = "poetry.masonry.api"
