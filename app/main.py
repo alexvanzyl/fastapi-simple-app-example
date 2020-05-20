@@ -1,4 +1,4 @@
-from typing import Any, List
+from typing import Any, List, Generator
 
 from fastapi import Depends, FastAPI, HTTPException
 from pydantic import UUID4
@@ -16,7 +16,7 @@ app = FastAPI()
 
 
 # Dependency to get DB session.
-def get_db():
+def get_db() -> Generator:
     try:
         db = SessionLocal()
         yield db
@@ -25,7 +25,7 @@ def get_db():
 
 
 @app.get("/")
-def index():
+def index() -> Any:
     return {"message": "Hello world!"}
 
 

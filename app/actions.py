@@ -1,9 +1,10 @@
 from typing import Any, Dict, Generic, List, Optional, Type, TypeVar, Union
 
 from fastapi.encoders import jsonable_encoder
-from pydantic import BaseModel
+from pydantic import UUID4, BaseModel
 from sqlalchemy.orm import Session
 
+from . import schemas
 from .db import Base
 from .models import Post
 
@@ -28,7 +29,7 @@ class BaseActions(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
     ) -> List[ModelType]:
         return db.query(self.model).offset(skip).limit(limit).all()
 
-    def get(self, db: Session, id: Any) -> Optional[ModelType]:
+    def get(self, db: Session, id: UUID4) -> Optional[ModelType]:
         return db.query(self.model).filter(self.model.id == id).first()
 
     def create(self, db: Session, *, obj_in: CreateSchemaType) -> ModelType:
@@ -59,15 +60,15 @@ class BaseActions(Generic[ModelType, CreateSchemaType, UpdateSchemaType]):
         db.refresh(db_obj)
         return db_obj
 
-    def remove(self, db: Session, *, id: int) -> ModelType:
+    def remove(self, db: Session, *, id: UUID4) -> ModelType:
         obj = db.query(self.model).get(id)
         db.delete(obj)
         db.commit()
         return obj
 
 
-class PostActions(BaseActions):
-    """Post actions with basic CRUD opperations"""
+class PostActions(BaseActions[Post, schemas.PostCreate, schemas.PostUpdate]):
+    """Post actions with basic CRUD operations"""
 
     pass
 
