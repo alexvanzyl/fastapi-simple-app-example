@@ -1,16 +1,16 @@
-from typing import Any, List, Generator
+from typing import Any, Generator, List
 
 from fastapi import Depends, FastAPI, HTTPException
 from pydantic import UUID4
 from sqlalchemy.orm import Session
 from starlette.status import HTTP_201_CREATED, HTTP_404_NOT_FOUND
 
-from . import actions, models, schemas
-from .db import SessionLocal, engine
+from . import actions, schemas
+from .db.session import SessionLocal
 
 # Create all tables in database.
 # Comment this out if you using migrations.
-models.Base.metadata.create_all(bind=engine)
+# models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 

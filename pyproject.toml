@@ -12,6 +12,8 @@ uvicorn = "^0.11.5"
 email_validator = "^1.1.0"
 psycopg2-binary = "^2.8.5"
 python-dotenv = "^0.13.0"
+alembic = "^1.4.2"
+inflect = "^4.1.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
