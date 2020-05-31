@@ -30,7 +30,7 @@ class Settings(BaseSettings):
         # file instead un-comment the below line and create the
         # .env file at the root of the project.
 
-        env_file = ".env"
+        # env_file = ".env"
 
 
 settings = Settings()
